@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
 tokens = [
     'ID',
     'NUMBER',
