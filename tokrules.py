@@ -1,5 +1,4 @@
 # This version simplifies all types by groups and assign to it a number to identify the group
-from typing import TYPE_CHECKING
 import ply.lex as lex
 
 # List of token names.   This is always required
