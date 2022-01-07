@@ -1,100 +1,22 @@
+# This version simplifies all types by groups and assign to it a number to identify the group
+from typing import TYPE_CHECKING
 import ply.lex as lex
 
 # List of token names.   This is always required
-
-keyword = {
-    'if' : 'IF',
-    'else' : 'ELSE',
-    'while' : 'WHILE',
-    'do' : 'DO',
-    'break' : 'BREAK',
-    'continue' : 'CONTINUE',
-    'int' : 'INT',
-    'double' : 'DOUBLE',
-    'float' : 'FLOAT',
-    'return' : 'RETURN',
-    'char' : 'CHAR',
-    'bool' : 'BOOL',
-    'case' : 'CASE',
-    'sizeof' : 'SIZEOF',
-    'long' : 'LONG',
-    'short' : 'SHORT',
-    'typedef' : 'TYPEDEF',
-    'switch' : 'SWITCH',
-    'unsigned' : 'UNSIGNED',
-    'void' : 'VOID',
-    'static' : 'STATIC',
-    'struct' : 'STRUCT',
-    'goto' : 'GOTO',
-    'printf' : 'PRINTF',
-    'main' : 'MAIN'
-}
-
-operator = {
-    'SUFFIX',
-    'POSTFIX',
-    'EQ',
-    'NE',
-    'LE',
-    'GE',
-    'OR',
-    'AND',
-    'ASSIGN',
-    'LT',
-    'GT',
-    'PLUS',
-    'MINUS',
-    'MULT',
-    'DIV'
-}
-
-delimiter = {
-    'LBRACKET',
-    'RBRACKET',
-    'LBRACE',
-    'RBRACE',
-    'COMMA',
-    'PCOMMA'
-}
-
-tokens = [
-    'DELIMITER',
-    'OPERATOR',
-    'IDENTIFIER',
-    'KEYWORD',
-    'STRING',
-    'CHAR',
-    'INTEGER',
-    'REALNUMBER',
-    'COMMENT'
-] + list(keyword) + list(operator) + list(delimiter)
-
+from constants import tokens, keyword
 
 def MyLexer():
-    # All Operators regular expressions
-    t_SUFFIX = r'\++'
-    t_POSTFIX = r'--' 
-    t_EQ = r'==' 
-    t_NE = r'!=' 
-    t_LE = r'<=' 
-    t_GE = r'>=' 
-    t_OR = r'\/\/' 
-    t_AND = r'&&' 
-    t_ASSIGN = r'\=' 
-    t_LT = r'<' 
-    t_GT = r'>' 
-    t_PLUS = r'\+'
-    t_MINUS = r'-' 
-    t_MULT = r'\*' 
-    t_DIV = r'\/' 
+    # Delimiters
+    t_DELIMITER = r'(\()|(\))|(\{)|(\})|(,)|(;)'
 
-    # All Operators regular expressions
-    t_LBRACKET = r'\('
-    t_RBRACKET = r'\)'
-    t_LBRACE = r'\{'
-    t_RBRACE = r'\}'
-    t_COMMA = r','
-    t_PCOMMA = r';'
+    # Operators
+    t_OPERATOR = r'(\++)|(--)|(==)|(!=)|(<=)|(>=)|(\|\|)|(\|)|(&&)|(&)|(\=)|(<)|(>)|(\+)|(-)|(\*)|(\/)|(\%)'
+
+    # Strings
+    t_STRING = r'\"([^\\\n]|(\\.))*?\"'
+
+    # Char
+    t_CHAR = r'\'([^\\\n]|(\\.))*?\''
 
     # Ignore include
     def t_INCLUDE(t):
@@ -104,8 +26,9 @@ def MyLexer():
 
     # Identifiers
     def t_IDENTIFIER(t):
-        r'[a-zA-Z_][a-zA-Z_0-9]*'
-        t.type = keyword.get(t.value,'IDENTIFIER')    # Check for reserved words
+        r'[a-zA-Z_]+[a-zA-Z0-9_]*'
+        if t.value in keyword:
+            t.type = 'KEYWORD'
         return t
 
     # Real Numbers
@@ -118,16 +41,6 @@ def MyLexer():
     def t_INTEGER(t):
         r'\d+'
         t.value = int(t.value)
-        return t
-
-    # Strings
-    def t_STRING(t):
-        r'\"([^\\\n]|(\\.))*?\"'
-        return t
-
-    # Char
-    def t_CHAR(t):
-        r'\'([^\\\n]|(\\.))*?\''
         return t
 
     # Define a rule so we can track line numbers
