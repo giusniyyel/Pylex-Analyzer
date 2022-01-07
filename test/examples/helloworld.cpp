@@ -5,6 +5,7 @@ int main() {
     float y = 8.9;
     double t = 4.5;
     int p = 1;
+    char floatpoint;
 
     // printf() displays the string inside quotation
     printf("Hello, World!");
