@@ -1,3 +1,12 @@
+# -----------------------------------------------------------------------------
+# pylex-analyzer: helpers.py
+#
+# Author: José Daniel Bautista Campos (Giusniyyel)
+# Email: giusniyyel@gmail.com
+# 
+# All rights reserved.
+# -----------------------------------------------------------------------------
+
 import os
 from constants import tokens, group_number
 

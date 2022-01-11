@@ -1,3 +1,12 @@
+# -----------------------------------------------------------------------------
+# pylex-analyzer: tokrules.py
+#
+# Author: José Daniel Bautista Campos (Giusniyyel)
+# Email: giusniyyel@gmail.com
+# 
+# All rights reserved.
+# -----------------------------------------------------------------------------
+
 # This version simplifies all types by groups and assign to it a number to identify the group
 import ply.lex as lex
 

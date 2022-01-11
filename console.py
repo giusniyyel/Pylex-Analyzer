@@ -1,3 +1,12 @@
+# -----------------------------------------------------------------------------
+# pylex-analyzer: console.py
+#
+# Author: José Daniel Bautista Campos (Giusniyyel)
+# Email: giusniyyel@gmail.com
+# 
+# All rights reserved.
+# -----------------------------------------------------------------------------
+
 from tokrules import MyLexer
 from helpers import token_group
 

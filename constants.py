@@ -1,3 +1,12 @@
+# -----------------------------------------------------------------------------
+# pylex-analyzer: constants.py
+#
+# Author: José Daniel Bautista Campos (Giusniyyel)
+# Email: giusniyyel@gmail.com
+# 
+# All rights reserved.
+# -----------------------------------------------------------------------------
+
 keyword = {
     'if',
     'else',
