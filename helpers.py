@@ -33,7 +33,7 @@ def token_group(tok):
     return group
 
 def group_table():
-    print("{:>8}    {:<12}".format('Token','Lexema'))
+    print("\n{:>8}    {:<12}".format('Token','Lexema'))
     print("{:>8}    {:<12}".format('--------','-----------'))
     for i in range(len(group_number)):
         print("{:>8}    {:<12}".format(str(group_number[i]),tokens[i]))

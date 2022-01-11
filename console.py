@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 
 from tokrules import MyLexer
-from helpers import token_group
+from helpers import token_group, group_table
 
 # Saving tokens values
 data_tokens = []
@@ -36,3 +36,6 @@ while True:
 
 # Print all the tokens
 print('\nTOKEN: ',data_tokens)
+
+# Print token table
+group_table()
