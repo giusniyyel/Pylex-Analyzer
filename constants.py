@@ -37,3 +37,14 @@ tokens = [
     'REALNUMBER',   #7
     'COMMENT'       #8
 ]
+
+group_number = [
+    5,      #DELIMITER
+    10,     #OPERATOR
+    20,     #IDENTIFIER
+    15,     #KEYWORD
+    8,      #STRING
+    16,     #CHAR
+    30,     #INTEGER
+    40      #REALNUMBER
+]
